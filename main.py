@@ -1,6 +1,6 @@
 import pygame
 import sys
-from config import WINDOW_WIDTH, WINDOW_HEIGHT, INTERACT_RANGE
+from config import WINDOW_WIDTH, WINDOW_HEIGHT
 
 from core.player import Player
 from core.background import Background
