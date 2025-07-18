@@ -18,27 +18,23 @@ class Player:
         self.held_item = None
 
     def handle_input(self, keys):
-        # Left movement
+        previous_direction = self.isLeft
+
         if keys[pygame.K_a]:
+            # Move left
             self.rect.x -= self.speed
             self.isLeft = True
-        # Right movement
         if keys[pygame.K_d]:
+            # Move right
             self.rect.x += self.speed
             self.isLeft = False
-        # Up movement
         if keys[pygame.K_w]:
+            # Move up
             self.rect.y -= self.speed
-        # Down movement
         if keys[pygame.K_s]:
+            # Move down
             self.rect.y += self.speed
-
-        # Flip image if facing right
-        if self.isLeft:
-            self.image = self.original_image
-        else:
-            self.image = pygame.transform.flip(self.original_image, True, False)
-
+            
         # Clamp within screen bounds
         self.rect.x = max(5, 
                           min(self.rect.x, 
@@ -48,11 +44,24 @@ class Player:
                               config.WINDOW_HEIGHT - self.rect.height - 5))
 
     def draw_player(self, screen):
+        # Flip player image based on direction
+        if self.isLeft:
+            self.image = self.original_image
+        else:
+            self.image = pygame.transform.flip(self.original_image, True, False)
+
+        # Draw player
         screen.blit(self.image, self.rect)
-        # Draw held item if any
         if self.held_item:
+            self.held_item.flip_item(self.isLeft)
+
+            # Position item relative to player
             item_offset_x = self.size // 2 if not self.isLeft else -self.size // 2
             item_x = self.rect.centerx + item_offset_x
             item_y = self.rect.centery
             self.held_item.rect.center = (item_x, item_y)
-            self.held_item.draw_item(screen, self.isLeft)
+
+            # Draw the held item
+            screen.blit(self.held_item.image, self.held_item.rect)
+
+

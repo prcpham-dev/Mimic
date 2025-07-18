@@ -1,4 +1,4 @@
-from config import WINDOW_WIDTH, WINDOW_HEIGHT
+from config import WINDOW_WIDTH, WINDOW_HEIGHT, INTERACT_RANGE
 from core.player import Player
 from core.background import Background
 
@@ -6,7 +6,8 @@ import pygame
 import sys
 
 def is_player_near(item, player):
-    return item.rect.colliderect(player.rect)
+    expanded_rect = player.rect.inflate(INTERACT_RANGE * 2, INTERACT_RANGE * 2)
+    return expanded_rect.colliderect(item.rect)
 
 def main():
     pygame.init()

@@ -20,5 +20,6 @@ class Background:
         ]
 
     def draw_items(self, screen):
-        for item in self.items:
+        # Sort items by z_index before drawing
+        for item in sorted(self.items, key=lambda x: getattr(x, "z_index", 0)):
             item.draw_item(screen)

@@ -2,19 +2,20 @@ from core.interactable.interactable import Interactable
 from config import ITEM_SIZE
 
 class Item(Interactable):
-    def __init__(self, name, x, y, color, image_path=None):
+    def __init__(self, name, x, y, image_path=None, activated=True):
         width = height = ITEM_SIZE
-        super().__init__(name, x, y, width, height, color)
+        self.activated = activated
+        super().__init__(name, x, y, width, height, image_path)
 
     def interact(self, player):
-        # Swap held item if already holding one
+        if not self.activated:
+            return
+
         if player.held_item:
+            player.held_item.activated = True
+            player.held_item.z_index = 0
             player.held_item.rect.center = self.rect.center
 
-            # Swap items
-            temp = player.held_item
-            player.held_item = self
-            print(f'Swapped {temp.name} with {self.name}!')
-        else:
-            player.held_item = self
-            print(f'You picked up {self.name}!')
+        player.held_item = self
+        self.activated = False
+
