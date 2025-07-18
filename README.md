@@ -17,14 +17,13 @@ pixel_ai_game/
 ├── assets/                    # Art, audio, fonts
 │   ├── player.png
 │   ├── npc.png
-│   ├── font.ttf
-│   └── ...
+│   └── items, maps,...
 │
 ├── core/                      # Game components (player, npc, tasks, UI)
 │   ├── player.py              # Player movement + control
 │   ├── npc.py                 # Static NPC behavior
 │   ├── task.py                # Chore/task system
-│   └── ui.py                  # Timer, prediction bar, overlays
+│   └── background.py          # Dealing with background and map, activities
 │
 ├── system/                    # AI behavior engine
 │   ├── logger.py              # Logs player actions to JSON
@@ -36,20 +35,13 @@ pixel_ai_game/
 │   └── timer.py               # In-game countdown timer logic
 │
 ├── data/                      # Saved logs and player behavior data
+│   ├── background.json        # Saved items and rooms and stuff we do later
 │   ├── day_1.json
 │   ├── day_2.json
 │   └── ...
 │
 └── README.md                  # Project description and how to run
 ```
-
----
-
-## 🗓️ 15-Day Development Plan
-
-// ...existing code...** is a pixel-art psychological sim where the player completes daily chores — but behind the scenes, the game observes, learns, and gradually mimics the player's behavior until control is lost to an AI that becomes you.
-
-This document outlines the 15-day solo development plan.
 
 ---
 
@@ -64,35 +56,36 @@ This document outlines the 15-day solo development plan.
 ### Day 2: Interactable System (Tasks & NPCs)
 - Create a base `Interactable` class
 - Add `ItemInteract` (task) and `NPC` (dialogue) subclasses
-- Enable `E` key interaction when the player is near
-- Add basic tasks and NPCs to the game world
+- Enable `Return` key interaction when the player is near
 
-### Day 3: Logger System
-- Create `logger.py` to track:
-  - Task order and completion
-  - Interactions with NPCs
-  - Time per action
-- Save data to JSON files in a `data/` folder
+### Day 3 + 4:
+- Create a `Room` class with neighbors (`up`, `down`, `left`, `right`)
+- Build support for room data/layout definition
+- Render basic room visuals and boundaries
+- Allow static content (walls, furniture, etc.) to be added per room
+- Handle room transitions when player reaches screen edge
+- Adjust player position during transitions
+- Load room-specific interactables and NPCs dynamically
+- Lay groundwork for room-linked behaviors (e.g. task limits, NPCs per room)
 
-### Day 4: Day Timer System
+### Day 5 + 6:
+- Add multiple types of `ItemInteract` tasks
+- Link tasks to specific rooms
+- Require different items per task
+- Introduce success/failure states based on player choices
+- Introduce task mistakes (e.g. wrong item, wrong order, wrong room)
+- Require the player to detect and correct errors
+- Vary task complexity: multi-step, chained interactions
+- Add visual or auditory feedback for success/failure 
+
+### Day 7: Holding, Swapping, and Timer Integration
+- Allow player to hold 2 items, with swapping (Tab or Right Click)
+- Display held items next to the player
+- Auto-drop the oldest item if picking up a third
 - Add a visible countdown timer (5–8 minutes per day)
 - End the game day automatically when time runs out
-- Optionally show a summary screen
-
-### Day 5: Room Transition System
-- Create a `Room` class with neighbors (`up`, `down`, `left`, `right`)
-- Handle transitions when the player touches the screen edges
-- Load new rooms and adjust player position accordingly
-
-### Day 6: Item Holding and Swapping
-- Allow the player to hold one item at a time
-- Picking up a new item drops the current one back into the world
-- Visually draw held item beside the player (left/right side)
-
-### Day 7: More Task Variety
-- Add multiple types of interactable tasks
-- Introduce mistakes the player must correct (e.g. wrong order)
-- Log task behavior for learning
+- Tie the timer into task completion and transitions
+- Optionally show a day-end summary screen
 
 ### Day 8: Prediction Engine (v1)
 - Build a basic prediction engine (frequency-based)
@@ -109,8 +102,6 @@ This document outlines the 15-day solo development plan.
   - Slight input override
   - Pre-movement before player acts
 - Reflect this subtly in the UI or behavior
-
-### Day 11: Ghost Control (Phase 2)
 - At 90%+, allow the AI to override key decisions
 - Lock out the player from certain tasks
 - Have the AI complete chores on your behalf
@@ -134,4 +125,7 @@ This document outlines the 15-day solo development plan.
 - Add save/load support for behavior history
 - Final UI polish and bug cleanup
 - Test with multiple users for personalization
+
+## Prediction model idea:
+Will write here soon
 
