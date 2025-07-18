@@ -1,9 +1,10 @@
 from core.interactable.interactable import Interactable
+from config import NPC_SIZE
 
 class npc(Interactable):
-    def __init__(self, x, y, width, height, color, name, dialogue):
-        super().__init__(x, y, width, height, color)
-        self.name = name
+    def __init__(self, name, x, y, color, dialogue):
+        width = height = NPC_SIZE
+        super().__init__(name, x, y, width, height, color)
         self.dialogue = dialogue
 
     def interact(self, player):

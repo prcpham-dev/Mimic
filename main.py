@@ -1,12 +1,9 @@
-import pygame
-import sys
 from config import WINDOW_WIDTH, WINDOW_HEIGHT
-
 from core.player import Player
 from core.background import Background
 
-from core.interactable.npc import npc
-from core.interactable.item import ItemInteract
+import pygame
+import sys
 
 def is_player_near(item, player):
     return item.rect.colliderect(player.rect)
@@ -21,20 +18,20 @@ def main():
     player = Player()
     background = Background()
 
-    # List of items
-
-    items = [
-        ItemInteract(100, 100, 100, 200, (255, 200, 150)),
-        npc(300, 200, 50, 50, (150, 200, 255), "Bob", "Hello there!"),
-        ItemInteract(500, 350, 40, 40, (255, 100, 100))
-    ]
-
     # Font for interaction prompt
     font = pygame.font.SysFont(None, 24)
 
     running = True
     while running:
         enter_pressed = False
+
+        # Movement
+        keys = pygame.key.get_pressed()
+        player.handle_input(keys)
+
+        # Drawing
+        background.draw_background(screen)
+        player.draw_player(screen)
 
         # Event loop: detect a single Enter press
         for event in pygame.event.get():
@@ -43,23 +40,14 @@ def main():
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 enter_pressed = True
 
-        # Drawing
-        background.draw_background(screen)
-
-        for item in items:
-            item.draw_item(screen)
-
-        player.draw_player(screen)
-        
-        # Movement
-        keys = pygame.key.get_pressed()
-        player.handle_input(keys)
-
         # Interactions (only if Enter was just pressed)
         if enter_pressed:
-            for item in items:
-                if is_player_near(item, player):
-                    item.interact(player)
+            # Find nearest item to player
+            nearby_items = [item for item in background.items if is_player_near(item, player)]
+            if nearby_items:
+                # Sort by distance to player center
+                nearest = min(nearby_items, key=lambda item: ((item.rect.centerx - player.rect.centerx) ** 2 + (item.rect.centery - player.rect.centery) ** 2))
+                nearest.interact(player)
 
         pygame.display.flip()
         clock.tick(60)
