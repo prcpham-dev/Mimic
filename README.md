@@ -78,7 +78,7 @@ pixel_ai_game/
 - Vary task complexity: multi-step, chained interactions
 - Add visual or auditory feedback for success/failure 
 
-### Day 7: Holding, Swapping, and Timer Integration
+### Day 7: Holding, Swapping, and Timer Integration, UI update with image
 - Allow player to hold 2 items, with swapping (Tab or Right Click)
 - Display held items next to the player
 - Auto-drop the oldest item if picking up a third
