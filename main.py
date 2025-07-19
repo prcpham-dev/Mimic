@@ -9,6 +9,12 @@ def is_player_near(item, player):
     expanded_rect = player.rect.inflate(INTERACT_RANGE * 2, INTERACT_RANGE * 2)
     return expanded_rect.colliderect(item.rect)
 
+def interacttion(background, player):
+    for item in background.items:
+        if is_player_near(item, player) and item.activated:
+            item.interact(player)
+            break
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -19,12 +25,8 @@ def main():
     player = Player()
     background = Background()
 
-    # Font for interaction prompt
-    font = pygame.font.SysFont(None, 24)
-
     running = True
     while running:
-        enter_pressed = False
 
         # Movement
         keys = pygame.key.get_pressed()
@@ -39,14 +41,8 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                enter_pressed = True
+                interacttion(background, player)
 
-        # Interactions (only if Enter was just pressed)
-        if enter_pressed:
-            for item in background.items:
-                if is_player_near(item, player) and item.activated:
-                    item.interact(player)
-                    break
 
         pygame.display.flip()
         clock.tick(60)
