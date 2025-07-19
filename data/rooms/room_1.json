@@ -1,0 +1,27 @@
+{
+    "id": "room_1",
+    "background_color": [30, 30, 30],
+    "neighbors": {
+        "left": null,
+        "down": null,
+        "right": "room_2",
+        "up": null
+    },
+    "interactables": [
+        {
+            "type": "Item",
+            "name": "Gun",
+            "x": 120,
+            "y": 180,
+            "sprite": "assets/gun.png"
+        },
+        {
+            "type": "NPC",
+            "name": "Bob",
+            "x": 250,
+            "y": 220,
+            "sprite": "assets/npc.png",
+            "dialogue": "Hey there!"
+        }
+    ]
+}

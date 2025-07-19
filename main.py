@@ -1,19 +1,12 @@
-from config import WINDOW_WIDTH, WINDOW_HEIGHT, INTERACT_RANGE
+from config import WINDOW_WIDTH, WINDOW_HEIGHT
 from core.player import Player
 from core.background import Background
 
+from system.interaction import handle_interaction
+from system.room_movement import handle_room_transition_or_clamp
+
 import pygame
 import sys
-
-def is_player_near(item, player):
-    expanded_rect = player.rect.inflate(INTERACT_RANGE * 2, INTERACT_RANGE * 2)
-    return expanded_rect.colliderect(item.rect)
-
-def interacttion(background, player):
-    for item in background.items:
-        if is_player_near(item, player) and item.activated:
-            item.interact(player)
-            break
 
 def main():
     pygame.init()
@@ -27,10 +20,12 @@ def main():
 
     running = True
     while running:
-
         # Movement
         keys = pygame.key.get_pressed()
         player.handle_input(keys)
+
+        # Handle room transitions based on player position
+        handle_room_transition_or_clamp(player, background)
 
         # Drawing
         background.draw_background(screen)
@@ -41,7 +36,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                interacttion(background, player)
+                handle_interaction(background, player)
 
 
         pygame.display.flip()

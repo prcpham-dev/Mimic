@@ -62,7 +62,6 @@ pixel_ai_game/
 - Create a `Room` class with neighbors (`up`, `down`, `left`, `right`)
 - Build support for room data/layout definition
 - Render basic room visuals and boundaries
-- Allow static content (walls, furniture, etc.) to be added per room
 - Handle room transitions when player reaches screen edge
 - Adjust player position during transitions
 - Load room-specific interactables and NPCs dynamically

@@ -18,30 +18,21 @@ class Player:
         self.held_item = None
 
     def handle_input(self, keys):
-        previous_direction = self.isLeft
-
+        # Move left
         if keys[pygame.K_a]:
-            # Move left
             self.rect.x -= self.speed
             self.isLeft = True
+        # Move right
         if keys[pygame.K_d]:
-            # Move right
             self.rect.x += self.speed
             self.isLeft = False
+        # Move up
         if keys[pygame.K_w]:
-            # Move up
             self.rect.y -= self.speed
+        # Move down
         if keys[pygame.K_s]:
-            # Move down
             self.rect.y += self.speed
-            
-        # Clamp within screen bounds
-        self.rect.x = max(5, 
-                          min(self.rect.x, 
-                          config.WINDOW_WIDTH - self.rect.width - 5))
-        self.rect.y = max(5, 
-                          min(self.rect.y, 
-                              config.WINDOW_HEIGHT - self.rect.height - 5))
+        
 
     def draw_player(self, screen):
         # Flip player image based on direction
