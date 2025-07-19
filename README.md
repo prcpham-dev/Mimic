@@ -128,4 +128,3 @@ pixel_ai_game/
 
 ## Prediction model idea:
 Will write here soon
-

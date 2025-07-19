@@ -12,7 +12,7 @@ PLAYER_SPEED = 5
 BACKGROUND_COLOR = (0, 0, 0)
 
 # Interactive elements
-INTERACT_RANGE = 32
+INTERACT_RANGE = 64
 
 # Item settings
 ITEM_SIZE = 40

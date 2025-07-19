@@ -43,12 +43,10 @@ def main():
 
         # Interactions (only if Enter was just pressed)
         if enter_pressed:
-            # Find nearest item to player
-            nearby_items = [item for item in background.items if is_player_near(item, player)]
-            if nearby_items:
-                # Sort by distance to player center
-                nearest = min(nearby_items, key=lambda item: ((item.rect.centerx - player.rect.centerx) ** 2 + (item.rect.centery - player.rect.centery) ** 2))
-                nearest.interact(player)
+            for item in background.items:
+                if is_player_near(item, player) and item.activated:
+                    item.interact(player)
+                    break
 
         pygame.display.flip()
         clock.tick(60)
