@@ -58,7 +58,7 @@ pixel_ai_game/
 - Add `ItemInteract` (task) and `NPC` (dialogue) subclasses
 - Enable `Return` key interaction when the player is near
 
-### Day 3 + 4:
+### Day 3 + 4: 😑
 - Create a `Room` class with neighbors (`up`, `down`, `left`, `right`)
 - Build support for room data/layout definition
 - Render basic room visuals and boundaries
@@ -120,7 +120,7 @@ pixel_ai_game/
 - Mirror those patterns in the AI and NPC dialogue
 - Create eerie moments of recognition
 
-### Day 15: Polish and Save System
+### Day 15: Polish and Save System add images use
 - Add save/load support for behavior history
 - Final UI polish and bug cleanup
 - Test with multiple users for personalization
