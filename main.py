@@ -1,8 +1,8 @@
 from config import WINDOW_WIDTH, WINDOW_HEIGHT
 from core.player import Player
 from core.background import Background
+from core.dialog.dialog import DialogBox
 
-from system.interaction import handle_interaction
 import system.player_movement as player_movement
 
 import pygame
@@ -17,24 +17,26 @@ def main():
     # Game objects
     player = Player()
     background = Background()
-
+    
+    font = pygame.font.SysFont("Arial", 28)
+    dialog = DialogBox(WINDOW_WIDTH, 120, font)
+    player.set_dialog(dialog)
+    
     running = True
     while running:
-        # Movement
+        # Keybinds
         keys = pygame.key.get_pressed()
         player_movement.handle_input(player, keys, background)
 
         # Drawing
         background.draw_background(screen)
         player.draw_player(screen)
+        player.dialog.draw(screen)
 
-        # Event loop: detect a single Enter press
+        # Event loop: detect closing
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                handle_interaction(background, player)
-
 
         pygame.display.flip()
         clock.tick(60)

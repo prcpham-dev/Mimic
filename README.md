@@ -66,6 +66,7 @@ pixel_ai_game/
 - Adjust player position during transitions
 - Load room-specific interactables and NPCs dynamically
 - Lay groundwork for room-linked behaviors (e.g. task limits, NPCs per room)
+- Create block obstacle
 
 ### Day 4 + 5 + 6:
 - Introduce tasks

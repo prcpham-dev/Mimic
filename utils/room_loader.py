@@ -2,7 +2,7 @@ import json
 from core.interactable.item import Item
 from core.interactable.NPC import NPC
 from core.room import Room
-from core.obstacle import Obstacle
+from core.interactable.obstacle import Obstacle
 
 
 def load_room_from_json(path):
@@ -25,8 +25,8 @@ def load_room_from_json(path):
             item = Item(name, x, y, image_path=sprite)
             interactables.append(item)
         elif obj_type == "NPC":
-            dialogue = obj.get("dialogue", "")
-            npc = NPC(name, x, y, image_path=sprite, dialogue=dialogue)
+            dialog_path = obj.get("dialog_path")
+            npc = NPC(name, x, y, image_path=sprite, dialog_path=dialog_path)
             interactables.append(npc)
         else:
             print(f"[WARN] Unknown interactable type in interactables: {obj_type}")

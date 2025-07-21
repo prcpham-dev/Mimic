@@ -23,8 +23,7 @@
             "x": 300,
             "y": 210,
             "sprite": "assets/npc.png",
-            "dialogue": "Don't touch the stove!",
-            "z_index": 2
+            "dialog_path": "data/npcs/Bob.json"
         }
     ],
     "obstacles": [],

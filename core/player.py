@@ -16,6 +16,8 @@ class Player:
 
         self.isLeft = True
         self.held_item = None
+        
+        self.dialog = None
 
     def draw_player(self, screen):
         # Flip player image based on direction
@@ -37,5 +39,8 @@ class Player:
 
             # Draw the held item
             screen.blit(self.held_item.image, self.held_item.rect)
+
+    def set_dialog(self, dialog):
+        self.dialog = dialog
 
 

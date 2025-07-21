@@ -31,6 +31,6 @@ class Background:
     def draw_background(self, screen):
         screen.fill(self.current_room.background_color)
         for obj in sorted(self.current_room.interactables, key=lambda x: getattr(x, "z_index", 0)):
-            obj.draw_item(screen)
+            obj.draw_interactable(screen)
         for obstacle in self.current_room.obstacles:
-            obstacle.draw_obstacle(screen)
+            obstacle.draw_interactable(screen)

@@ -1,11 +1,15 @@
 from core.interactable.interactable import Interactable
+from utils.npc_loader import load_npc_conversation
 from config import NPC_SIZE
 
 class NPC(Interactable):
-    def __init__(self, name, x, y, image_path, dialogue):
+    def __init__(self, name, x, y, image_path, dialog_path):
         width = height = NPC_SIZE
-        super().__init__(name, x, y, width, height, image_path)
-        self.dialogue = dialogue
+        self.dialog_path = dialog_path
+        super().__init__(name, x, y, width, height, image_path )
 
     def interact(self, player):
-        print(f"{self.name}: {self.dialogue}")
+        conversation = load_npc_conversation(self.dialog_path)
+        text = conversation.get("dialogue", "")
+        options = [opt["text"] for opt in conversation.get("options", [])]
+        player.dialog.open(text, options=options, title=self.name)

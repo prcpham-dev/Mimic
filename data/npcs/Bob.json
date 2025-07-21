@@ -1,0 +1,22 @@
+{
+    "dialogue": "Hello, traveler! What do you want to do?",
+    "options": [
+        {"text": "Who are you?", "next": "intro"},
+        {"text": "Goodbye.", "next": null}
+    ],
+    "branches": {
+        "intro": {
+            "dialogue": "I'm Bob, the village guard. Anything else?",
+            "options": [
+                {"text": "Nice to meet you.", "next": null},
+                {"text": "What do you guard?", "next": "guard"}
+            ]
+        },
+        "guard": {
+            "dialogue": "I guard the village gate from monsters.",
+            "options": [
+                {"text": "Thanks for your service.", "next": null}
+            ]
+        }
+    }
+}

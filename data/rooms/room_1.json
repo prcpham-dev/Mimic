@@ -21,7 +21,7 @@
             "x": 250,
             "y": 220,
             "sprite": "assets/npc.png",
-            "dialogue": "Hey there!"
+            "dialog_path": "data/npcs/Bob.json"
         }
     ],
     "obstacles": [

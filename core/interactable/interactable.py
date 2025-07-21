@@ -10,7 +10,7 @@ class Interactable:
         self.original_image = self.image.copy()
         self.activated = True
 
-    def draw_item(self, screen, isLeft=True):
+    def draw_interactable(self, screen, isLeft=True):
         if isLeft:
             screen.blit(self.image, self.rect.topleft)
         else:
