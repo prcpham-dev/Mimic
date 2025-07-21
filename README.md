@@ -94,6 +94,7 @@ pixel_ai_game/
 - End the game day automatically when time runs out
 - Tie the timer into task completion and transitions
 - Optionally show a day-end summary screen
+- Item drop and stuff
 
 ### Day 8: Prediction Engine (v1)
 - Build a basic prediction engine (frequency-based)

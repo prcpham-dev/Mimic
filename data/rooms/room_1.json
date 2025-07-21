@@ -23,5 +23,16 @@
             "sprite": "assets/npc.png",
             "dialogue": "Hey there!"
         }
+    ],
+    "obstacles": [
+        {
+            "type": "Obstacle",
+            "name": "Block",
+            "x": 500,
+            "y": 300,
+            "width": 200,
+            "height": 200,
+            "sprite": "assets/house.png"
+        }
     ]
 }

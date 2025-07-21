@@ -27,6 +27,7 @@
             "z_index": 2
         }
     ],
+    "obstacles": [],
     "tasks": {
         "limit": 1,
         "allowed_types": ["cook"]

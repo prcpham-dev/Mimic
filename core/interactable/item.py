@@ -18,4 +18,3 @@ class Item(Interactable):
 
         player.held_item = self
         self.activated = False
-

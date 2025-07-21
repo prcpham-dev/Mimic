@@ -23,4 +23,4 @@ class Interactable:
             self.image = pygame.transform.flip(self.original_image, True, False)
 
     def interact(self, player):
-        raise NotImplementedError("Subclasses must implement 'interact()'")
+        print(f"{self.name} interacted with by player.")

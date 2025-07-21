@@ -3,7 +3,7 @@ from core.player import Player
 from core.background import Background
 
 from system.interaction import handle_interaction
-from system.room_movement import handle_room_transition_or_clamp
+import system.player_movement as player_movement
 
 import pygame
 import sys
@@ -22,10 +22,7 @@ def main():
     while running:
         # Movement
         keys = pygame.key.get_pressed()
-        player.handle_input(keys)
-
-        # Handle room transitions based on player position
-        handle_room_transition_or_clamp(player, background)
+        player_movement.handle_input(player, keys, background)
 
         # Drawing
         background.draw_background(screen)

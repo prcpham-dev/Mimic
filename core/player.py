@@ -17,23 +17,6 @@ class Player:
         self.isLeft = True
         self.held_item = None
 
-    def handle_input(self, keys):
-        # Move left
-        if keys[pygame.K_a]:
-            self.rect.x -= self.speed
-            self.isLeft = True
-        # Move right
-        if keys[pygame.K_d]:
-            self.rect.x += self.speed
-            self.isLeft = False
-        # Move up
-        if keys[pygame.K_w]:
-            self.rect.y -= self.speed
-        # Move down
-        if keys[pygame.K_s]:
-            self.rect.y += self.speed
-        
-
     def draw_player(self, screen):
         # Flip player image based on direction
         if self.isLeft:
