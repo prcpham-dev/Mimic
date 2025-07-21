@@ -58,7 +58,7 @@ pixel_ai_game/
 - Add `ItemInteract` (task) and `NPC` (dialogue) subclasses
 - Enable `Return` key interaction when the player is near
 
-### Day 3 + 4: 😑
+### Day 3:
 - Create a `Room` class with neighbors (`up`, `down`, `left`, `right`)
 - Build support for room data/layout definition
 - Render basic room visuals and boundaries
@@ -67,15 +67,24 @@ pixel_ai_game/
 - Load room-specific interactables and NPCs dynamically
 - Lay groundwork for room-linked behaviors (e.g. task limits, NPCs per room)
 
-### Day 5 + 6:
-- Add multiple types of `ItemInteract` tasks
-- Link tasks to specific rooms
-- Require different items per task
-- Introduce success/failure states based on player choices
-- Introduce task mistakes (e.g. wrong item, wrong order, wrong room)
-- Require the player to detect and correct errors
-- Vary task complexity: multi-step, chained interactions
-- Add visual or auditory feedback for success/failure 
+### Day 4 + 5 + 6:
+- Introduce tasks
+- Design room itesm and background stuff and new tasks and item
+- More interaction for rooms
+- NPC
+  - Blacksmith guy
+  - Farming guy
+  - Fishing guy
+  - Cooking chef guy
+  - General trading guy
+  - Black market guy
+
+- Tasks example:
+  - Planting
+  - Fishing
+  - Blacksmith
+  - Gift giving, social interaction
+  - Fighting (Maybe undertale style to not deal with the aniumation and hitbox)
 
 ### Day 7: Holding, Swapping, and Timer Integration, UI update with image
 - Allow player to hold 2 items, with swapping (Tab or Right Click)
