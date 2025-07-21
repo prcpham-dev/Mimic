@@ -67,11 +67,20 @@ def move_and_handle_y(player, dy, background):
                 break
 
 def handle_input(player, keys, background):
+    if player.dialog.active:
+        if keys[pygame.K_e]:
+            player.dialog.close()
+
+        return
+    
     dx, dy = get_movement_delta(player, keys)
     move_and_handle_x(player, dx, background)
     move_and_handle_y(player, dy, background)
 
     enter_pressed = keys[pygame.K_RETURN]
-    if enter_pressed and not player._prev_enter_state:
+    if enter_pressed:
         handle_interaction(background, player)
-    player._prev_enter_state = enter_pressed
+
+
+## HANDLE SINGLE PRESS ENTER WHEN CLOSE SO IT DOES NOT REPEAT WHEN CLOSE
+## ALSO ONLY PRESS ENTER ON ONE THING
