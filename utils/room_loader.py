@@ -10,7 +10,7 @@ def load_room_from_json(path):
         data = json.load(f)
 
     room_id = data["id"]
-    background_color = tuple(data.get("background_color", [0, 0, 0]))
+    background_img = data.get("background_img")
     neighbors = data.get("neighbors", {})
 
     interactables = []
@@ -46,4 +46,4 @@ def load_room_from_json(path):
         else:
             print(f"[WARN] Unknown obstacle type: {obj_type}")
 
-    return Room(room_id, background_color, neighbors, interactables, obstacles)
+    return Room(room_id, background_img, neighbors, interactables, obstacles)

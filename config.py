@@ -8,9 +8,6 @@ PLAYER_SIZE = 56
 PLAYER_MODEL = "assets/player.png"
 PLAYER_SPEED = 5
 
-# Background settings
-BACKGROUND_COLOR = (0, 0, 0)
-
 # Interactive elements
 INTERACT_RANGE = 64
 

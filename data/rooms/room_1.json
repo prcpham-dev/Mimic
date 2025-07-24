@@ -1,6 +1,6 @@
 {
     "id": "room_1",
-    "background_color": [30, 30, 30],
+    "background_img": "assets/background/room_1.png",
     "neighbors": {
         "left": null,
         "down": null,

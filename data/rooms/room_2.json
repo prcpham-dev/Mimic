@@ -1,7 +1,7 @@
 {
     "id": "room_2",
     "name": "Kitchen",
-    "background_color": [60, 50, 40],
+    "background_img": "assets/background/room_2.png",
     "neighbors": {
         "left": "room_1",
         "down": null,

@@ -1,5 +1,6 @@
 from utils.room_loader import load_room_from_json
 from config import WINDOW_WIDTH, WINDOW_HEIGHT
+import pygame
 
 class Background:
     def __init__(self):
@@ -29,7 +30,10 @@ class Background:
             player.rect.y = 0
 
     def draw_background(self, screen):
-        screen.fill(self.current_room.background_color)
+        img = pygame.image.load(self.current_room.background_img)
+        img = pygame.transform.scale(img, (WINDOW_WIDTH, WINDOW_HEIGHT))
+        screen.blit(img, (0, 0))
+
         for obj in sorted(self.current_room.interactables, key=lambda x: getattr(x, "z_index", 0)):
             obj.draw_interactable(screen)
         for obstacle in self.current_room.obstacles:
