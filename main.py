@@ -19,7 +19,7 @@ def main():
     background = Background()
     
     font = pygame.font.SysFont("Arial", 28)
-    dialog = DialogBox(WINDOW_WIDTH, 120, font)
+    dialog = DialogBox(font)
     player.set_dialog(dialog)
     
     running = True
