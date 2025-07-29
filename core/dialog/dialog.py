@@ -1,91 +1,78 @@
 import pygame
+from config import *
 
 class DialogBox:
-    def __init__(self, width, height, font):
-        self.width = width
-        self.height = height
+    def __init__(self, font):
         self.font = font
+        self.width = WINDOW_WIDTH
+        self.height = BOX_HEIGHT
         self.active = False
-        self.text = ""
-        self.options = []
-        self.selected_option = None
 
-    def open(self, text, options=None, title=None):
+    def open(self, text, title, options=None):
         self.active = True
+        self.title = title
         self.text = text
         self.options = options or []
         self.selected_option = None
-        self.title = title
 
     def close(self):
         self.active = False
 
-    def handle_event(self, event):
-        if not self.active:
-            return
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
-            self.close()
-        elif event.type == pygame.MOUSEBUTTONDOWN and self.options:
-            mx, my = pygame.mouse.get_pos()
-            for idx, rect in enumerate(self._option_rects()):
-                if rect.collidepoint(mx, my):
-                    self.selected_option = idx
-                    self.close()
-
     def draw(self, screen):
         if not self.active:
             return
-        # Grey out the screen (less dark)
-        overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
-        overlay.fill((0, 0, 0, 100))
-        screen.blit(overlay, (0, 0))
+        
+        box_rect = self._get_box_rect()
+        self._draw_box_background(screen, box_rect)
+        self._draw_text(screen, box_rect)
 
-        # Draw dialog box
-        box_rect = pygame.Rect(40, screen.get_height() - self.height - 40, self.width, self.height)
-        pygame.draw.rect(screen, (40, 40, 40), box_rect)
-        pygame.draw.rect(screen, (255, 255, 255), box_rect, 3)
+    def _get_box_rect(self):
+        x = MARGIN
+        y = WINDOW_HEIGHT - self.height - MARGIN
+        width = self.width - (2 * MARGIN)
+        return pygame.Rect(x, y, width, self.height)
 
-        y_offset = box_rect.y + 20
+    def _draw_box_background(self, screen, box_rect):
+        pygame.draw.rect(screen, BOX_COLOR, box_rect)
+        pygame.draw.rect(screen, BORDER_COLOR, box_rect, BORDER_WIDTH)
 
-        # Render title (NPC name)
-        if hasattr(self, "title") and self.title:
-            title_surf = self.font.render(self.title, True, (255, 255, 0))
-            screen.blit(title_surf, (box_rect.x + 20, y_offset))
-            y_offset += self.font.get_height() + 10
-
-        # Render text
-        lines = self._wrap_text(self.text, self.font, self.width - 40)
+    def _draw_text(self, screen, box_rect):
+        lines = self._wrap_text(self.text, self.font, box_rect.width - (2 * PADDING))
+        y_offset = box_rect.y + PADDING
+        
         for i, line in enumerate(lines):
-            txt_surf = self.font.render(line, True, (255, 255, 255))
-            screen.blit(txt_surf, (box_rect.x + 20, y_offset + i * (self.font.get_height() + 5)))
-
-        # Render options
-        if self.options:
-            for idx, option in enumerate(self.options):
-                opt_rect = self._option_rects()[idx]
-                pygame.draw.rect(screen, (80, 80, 80), opt_rect)
-                pygame.draw.rect(screen, (200, 200, 200), opt_rect, 2)
-                opt_surf = self.font.render(option, True, (255, 255, 0))
-                screen.blit(opt_surf, (opt_rect.x + 10, opt_rect.y + 5))
-
-    def _option_rects(self):
-        rects = []
-        base_y = pygame.display.get_surface().get_height() - self.height + 40
-        for idx, _ in enumerate(self.options):
-            rects.append(pygame.Rect(60 + idx * 220, base_y, 200, 40))
-        return rects
+            x_pos = box_rect.x + PADDING
+            y_pos = y_offset + (i * (self.font.get_height() + LINE_SPACING))
+            
+            if self.title and i == 0:
+                title_surface = self.font.render(f"{self.title}: ", True, TITLE_COLOR)
+                screen.blit(title_surface, (x_pos, y_pos))
+                text_surface = self.font.render(line, True, TEXT_COLOR)
+                title_width = title_surface.get_width()
+                screen.blit(text_surface, (x_pos + title_width, y_pos))
+            else:
+                text_surface = self.font.render(line, True, TEXT_COLOR)
+                screen.blit(text_surface, (x_pos, y_pos))
 
     def _wrap_text(self, text, font, max_width):
+        """
+        Handle long phrases.
+        """
         words = text.split(' ')
         lines = []
-        current = ""
+        current_line = ""
+        
         for word in words:
-            test = current + word + " "
-            if font.size(test)[0] <= max_width:
-                current = test
+            test_line = f"{current_line}{word} " if current_line else f"{word} "
+            
+            if font.size(test_line)[0] <= max_width:
+                current_line = test_line
             else:
-                lines.append(current)
-                current = word + " "
-        if current:
-            lines.append(current)
+                if current_line: 
+                    lines.append(current_line.rstrip())
+                current_line = f"{word} "
+        
+        if current_line:
+            lines.append(current_line.rstrip())
+            
         return lines
