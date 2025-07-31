@@ -87,6 +87,8 @@ pixel_ai_game/
   - Gift giving, social interaction
   - Fighting (Maybe undertale style to not deal with the aniumation and hitbox)
 
+- And also do the tag on item or stuff that we interacting, show what we want to interact
+
 ### Day 7: Holding, Swapping, and Timer Integration, UI update with image
 - Allow player to hold 2 items, with swapping (Tab or Right Click)
 - Display held items next to the player
