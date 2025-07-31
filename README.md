@@ -2,8 +2,6 @@
 
 **Mirror** is a pixel-art psychological sim where the player completes daily chores — but behind the scenes, the game observes, learns, and gradually mimics the player's behavior until control is lost to an AI that becomes you.
 
-This document outlines the 15-day solo development plan.
-
 ---
 
 ## 📁 Project Structure
@@ -45,20 +43,19 @@ pixel_ai_game/
 
 ---
 
-## 🗓️ 15-Day Development Plan
 
-### Day 1: Project Setup and Player Movement
+### Project Setup and Player Movement
 - Set up folder structure and install Pygame
 - Create game window and main loop
 - Add a simple player object that can move around
 - Prevent the player from leaving the screen
 
-### Day 2: Interactable System (Tasks & NPCs)
+### Interactable System (Tasks & NPCs)
 - Create a base `Interactable` class
 - Add `ItemInteract` (task) and `NPC` (dialogue) subclasses
 - Enable `Return` key interaction when the player is near
 
-### Day 3:
+### Room tasks
 - Create a `Room` class with neighbors (`up`, `down`, `left`, `right`)
 - Build support for room data/layout definition
 - Render basic room visuals and boundaries
@@ -68,7 +65,7 @@ pixel_ai_game/
 - Lay groundwork for room-linked behaviors (e.g. task limits, NPCs per room)
 - Create block obstacle
 
-### Day 4 + 5 + 6:
+### Activities tasks
 - Introduce tasks
 - Design room itesm and background stuff and new tasks and item
 - More interaction for rooms
@@ -89,7 +86,7 @@ pixel_ai_game/
 
 - And also do the tag on item or stuff that we interacting, show what we want to interact
 
-### Day 7: Holding, Swapping, and Timer Integration, UI update with image
+### Holding, Swapping, and Timer Integration, UI update with image
 - Allow player to hold 2 items, with swapping (Tab or Right Click)
 - Display held items next to the player
 - Auto-drop the oldest item if picking up a third
@@ -99,17 +96,17 @@ pixel_ai_game/
 - Optionally show a day-end summary screen
 - Item drop and stuff
 
-### Day 8: Prediction Engine (v1)
+### Prediction Engine (v1)
 - Build a basic prediction engine (frequency-based)
 - Before each task, guess what the player will do
 - Track and store predictions vs actual behavior
 
-### Day 9: Accuracy Evaluation
+### Accuracy Evaluation
 - Calculate prediction accuracy each day
 - Save and display a confidence score (0–100%)
 - Feed score into the ghost control engine
 
-### Day 10: Ghost Control (Phase 1)
+### Ghost Control (Phase 1)
 - When accuracy > 60%, begin light ghosting:
   - Slight input override
   - Pre-movement before player acts
@@ -118,22 +115,22 @@ pixel_ai_game/
 - Lock out the player from certain tasks
 - Have the AI complete chores on your behalf
 
-### Day 12: Dialogue Memory
+### Dialogue Memory
 - NPCs remember past conversations
 - Begin echoing player tone, word choice, or task logic
 - Start shifting from helpers to reflections
 
-### Day 13: Dynamic AI Behavior
+### Dynamic AI Behavior
 - Adjust predictions and ghosting based on evolving habits
 - Add variety to ghost actions
 - Simulate a learning model that adapts over time
 
-### Day 14: Emotion and Style Mimicry
+### Emotion and Style Mimicry
 - Track player tendencies (e.g. kindness, selfishness, efficiency)
 - Mirror those patterns in the AI and NPC dialogue
 - Create eerie moments of recognition
 
-### Day 15: Polish and Save System add images use
+### Polish and Save System add images use
 - Add save/load support for behavior history
 - Final UI polish and bug cleanup
 - Test with multiple users for personalization
