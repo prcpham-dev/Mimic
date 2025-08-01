@@ -2,7 +2,10 @@ from config import WINDOW_WIDTH, WINDOW_HEIGHT
 from system.interaction import handle_interaction
 import pygame
 
-def get_movement_delta(player, keys):
+# Global variable to track Enter key state
+enter_pressed_last_frame = False
+
+def get_new_position(player, keys):
     dx, dy = 0, 0
     if keys[pygame.K_a]:
         dx -= player.speed
@@ -67,20 +70,20 @@ def move_and_handle_y(player, dy, background):
                 break
 
 def handle_input(player, keys, background):
+    global enter_pressed_last_frame
+
     if player.dialog.active:
         if keys[pygame.K_e]:
             player.dialog.close()
-
         return
-    
-    dx, dy = get_movement_delta(player, keys)
+
+    if keys[pygame.K_RETURN]:
+        if not enter_pressed_last_frame:
+            handle_interaction(background, player)
+        enter_pressed_last_frame = True
+    else:
+        enter_pressed_last_frame = False
+
+    dx, dy = get_new_position(player, keys)
     move_and_handle_x(player, dx, background)
     move_and_handle_y(player, dy, background)
-
-    enter_pressed = keys[pygame.K_RETURN]
-    if enter_pressed:
-        handle_interaction(background, player)
-
-
-## HANDLE SINGLE PRESS ENTER WHEN CLOSE SO IT DOES NOT REPEAT WHEN CLOSE
-## ALSO ONLY PRESS ENTER ON ONE THING
