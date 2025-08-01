@@ -3,7 +3,7 @@ from core.tasks.task import BaseTask
 
 class PlantingTask(BaseTask):
     def __init__(self):
-        super().__init__("Planting", minigame_bg_color=(30, 60, 30))
+        super().__init__("Planting", background_image=None)
         self.progress = 0
         self.font = pygame.font.SysFont(None, 36)
 
