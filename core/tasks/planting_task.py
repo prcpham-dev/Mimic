@@ -3,7 +3,7 @@ from core.tasks.task import BaseTask
 
 class PlantingTask(BaseTask):
     def __init__(self):
-        super().__init__("Planting", background_image=None)
+        super().__init__("Planting", background_img="assets/background/tasks/plantGame.png")
         self.progress = 0
         self.font = pygame.font.SysFont(None, 36)
 
@@ -17,8 +17,8 @@ class PlantingTask(BaseTask):
                     self.success = True
 
     def draw_screen(self, screen):
-        screen.fill((64,112,52))
-        text = self.font.render(f"Planting... {self.progress}/5", True, (255, 255, 255))
+        super().draw_screen(screen)
+        text = self.font.render(f"Planting (press space)... {self.progress}/5", True, (255, 255, 255))
         screen.blit(text, (100, 100))
 
     def on_task_completed(self):

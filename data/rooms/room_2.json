@@ -1,7 +1,7 @@
 {
     "id": "room_2",
     "name": "Kitchen",
-    "background_img": "assets/background/room_2.png",
+    "background_img": "assets/background/rooms/room_2.png",
     "neighbors": {
         "left": "room_1",
         "down": null,
@@ -14,7 +14,7 @@
             "name": "Sword",
             "x": 100,
             "y": 160,
-            "sprite": "assets/sword.png",
+            "sprite": "assets/items/sword.png",
             "z_index": 1
         },
         {
@@ -22,7 +22,7 @@
             "name": "Chef",
             "x": 300,
             "y": 210,
-            "sprite": "assets/npc.png",
+            "sprite": "assets/npc/npc.png",
             "dialog_path": "data/npcs/Bob.json"
         }
     ],

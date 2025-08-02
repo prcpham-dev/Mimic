@@ -1,6 +1,6 @@
 {
     "id": "room_1",
-    "background_img": "assets/background/room_1.png",
+    "background_img": "assets/background/rooms/room_1.png",
     "neighbors": {
         "left": null,
         "down": null,
@@ -13,14 +13,14 @@
             "name": "Gun",
             "x": 120,
             "y": 180,
-            "sprite": "assets/gun.png"
+            "sprite": "assets/items/gun.png"
         },
         {
             "type": "NPC",
             "name": "Bob",
             "x": 250,
             "y": 220,
-            "sprite": "assets/npc.png",
+            "sprite": "assets/npc/npc.png",
             "dialog_path": "data/npcs/Bob.json"
         }
     ],
