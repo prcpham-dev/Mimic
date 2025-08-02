@@ -5,7 +5,8 @@ def is_player_near(item, player):
     return range.colliderect(item.rect)
 
 def handle_interaction(background, player):
-    for item in background.current_room.interactables:
+    items = background.current_room.obstacles + background.current_room.interactables
+    for item in items:
         if is_player_near(item, player) and item.activated:
             item.interact(player)
             return item

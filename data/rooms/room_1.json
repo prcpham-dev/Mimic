@@ -33,6 +33,15 @@
             "width": 200,
             "height": 200,
             "sprite": "assets/house.png"
+        },
+        {
+            "type": "Garden_plot",
+            "name": "Flower Pot",
+            "x": 125,
+            "y": 400,
+            "width": 100,
+            "height": 100,
+            "sprite": "assets/garden_plot.png"
         }
     ]
 }

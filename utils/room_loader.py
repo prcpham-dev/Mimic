@@ -3,6 +3,7 @@ from core.interactable.item import Item
 from core.interactable.NPC import NPC
 from core.room import Room
 from core.interactable.obstacle import Obstacle
+from core.interactable.garden_plot import Garden_plot
 
 
 def load_room_from_json(path):
@@ -37,11 +38,14 @@ def load_room_from_json(path):
         name = obj.get("name")
         x = obj.get("x", 0)
         y = obj.get("y", 0)
+        width = obj["width"]
+        height = obj["height"]
         sprite = obj.get("sprite")
         if obj_type == "Obstacle":
-            width = obj["width"]
-            height = obj["height"]
             obstacle = Obstacle(name, x, y, width, height, image_path=sprite)
+            obstacles.append(obstacle)
+        elif obj_type == "Garden_plot":
+            obstacle = Garden_plot(name, x, y, width, height, image_path=sprite)
             obstacles.append(obstacle)
         else:
             print(f"[WARN] Unknown obstacle type: {obj_type}")

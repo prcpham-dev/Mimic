@@ -21,11 +21,10 @@ def main():
     background = Background()
     
     # Dialog objects
-    dialog = DialogBox(font)
-    player.set_dialog(dialog)
+    player.set_dialog(DialogBox(font))
 
     # Task manager object
-    task_manager = TaskManager()
+    player.set_task_manager(TaskManager())
 
     running = True
     while running:
@@ -36,10 +35,10 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        if task_manager.is_running():
+        if player.task_manager.is_running():
             # Task logic
-            task_manager.run(events)
-            task_manager.draw(screen)
+            player.task_manager.run(events)
+            player.task_manager.draw(screen)
         else:
             # Normal room logic
             keys = pygame.key.get_pressed()

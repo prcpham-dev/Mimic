@@ -17,7 +17,7 @@ class PlantingTask(BaseTask):
                     self.success = True
 
     def draw_screen(self, screen):
-        screen.fill(self.minigame_bg_color)
+        screen.fill((64,112,52))
         text = self.font.render(f"Planting... {self.progress}/5", True, (255, 255, 255))
         screen.blit(text, (100, 100))
 
