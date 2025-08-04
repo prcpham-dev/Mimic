@@ -134,6 +134,7 @@ pixel_ai_game/
 - Add save/load support for behavior history
 - Final UI polish and bug cleanup
 - Test with multiple users for personalization
+- Reorganize utils/room_loader.py to make it more optimal
 
 ## Prediction model idea:
 Will write here soon

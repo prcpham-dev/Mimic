@@ -22,8 +22,8 @@
             "name": "Chef",
             "x": 300,
             "y": 210,
-            "sprite": "assets/npc/npc.png",
-            "dialog_path": "data/npcs/Bob.json"
+            "sprite": "assets/npc/chef.png",
+            "dialog_path": "data/npcs/Chef.json"
         }
     ],
     "obstacles": [],
