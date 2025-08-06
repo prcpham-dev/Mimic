@@ -64,24 +64,20 @@ pixel_ai_game/
 - Load room-specific interactables and NPCs dynamically
 - Lay groundwork for room-linked behaviors (e.g. task limits, NPCs per room)
 - Create block obstacle
+- Implementing rooms like house, only certain spot can go to the next area or room
 
 ### Activities tasks
 - Introduce tasks
 - Design room itesm and background stuff and new tasks and item
 - More interaction for rooms
 - NPC
-  - Blacksmith guy
   - Farming guy
-  - Fishing guy
-  - Cooking chef guy
+  - Chef guy
   - General trading guy
   - Black market guy
 
 - Tasks example:
   - Planting
-  - Fishing
-  - Blacksmith
-  - Gift giving, social interaction
   - Fighting (Maybe undertale style to not deal with the aniumation and hitbox)
 
 - And also do the tag on item or stuff that we interacting, show what we want to interact
@@ -94,7 +90,7 @@ pixel_ai_game/
 - End the game day automatically when time runs out
 - Tie the timer into task completion and transitions
 - Optionally show a day-end summary screen
-- Item drop and stuff
+- Item drop and stuff area
 
 ### Prediction Engine (v1)
 - Build a basic prediction engine (frequency-based)
@@ -135,6 +131,3 @@ pixel_ai_game/
 - Final UI polish and bug cleanup
 - Test with multiple users for personalization
 - Reorganize utils/room_loader.py to make it more optimal
-
-## Prediction model idea:
-Will write here soon
