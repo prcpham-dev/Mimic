@@ -10,6 +10,4 @@ class NPC(Interactable):
 
     def interact(self, player):
         conversation = load_npc_conversation(self.dialog_path)
-        text = conversation.get("dialogue", "")
-        options = [opt["text"] for opt in conversation.get("options", [])]
-        player.dialog.open(text, options=options, title=self.name)
+        player.dialog.open(self.name, conversation)

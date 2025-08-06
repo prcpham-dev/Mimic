@@ -1,7 +1,7 @@
 {
     "dialogue": "Do you want some food?",
     "options": [
-        {"text": "Yes!!!", "next": null},
+        {"text": "Yes!!!", "next": "chicken"},
         {"text": "No I am good?", "next": null}
     ],
     "branches": {

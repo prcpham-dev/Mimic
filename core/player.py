@@ -14,15 +14,17 @@ class Player:
         self.rect = self.image.get_rect()
         self.rect.center = (config.WINDOW_WIDTH // 2, config.WINDOW_HEIGHT // 2)
 
-        self.isLeft = True
+        self.is_left = True
         self.held_item = None
+
+        self.can_move = True
         
         self.dialog = None
         self.task_manager = None
 
     def draw_player(self, screen):
         # Flip player image based on direction
-        if self.isLeft:
+        if self.is_left:
             self.image = self.original_image
         else:
             self.image = pygame.transform.flip(self.original_image, True, False)
@@ -30,10 +32,10 @@ class Player:
         # Draw player
         screen.blit(self.image, self.rect)
         if self.held_item:
-            self.held_item.flip_item(self.isLeft)
+            self.held_item.flip_item(self.is_left)
 
             # Position item relative to player
-            item_offset_x = self.size // 2 if not self.isLeft else -self.size // 2
+            item_offset_x = self.size // 2 if not self.is_left else -self.size // 2
             item_x = self.rect.centerx + item_offset_x
             item_y = self.rect.centery
             self.held_item.rect.center = (item_x, item_y)
@@ -46,5 +48,9 @@ class Player:
 
     def set_task_manager(self, task_manager):
         self.task_manager = task_manager
+
+    def move_switch(self):
+        self.can_move = not self.can_move
+
 
 

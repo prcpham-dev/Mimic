@@ -9,10 +9,10 @@ def get_new_position(player, keys):
     dx, dy = 0, 0
     if keys[pygame.K_a]:
         dx -= player.speed
-        player.isLeft = True
+        player.is_left = True
     if keys[pygame.K_d]:
         dx += player.speed
-        player.isLeft = False
+        player.is_left = False
     if keys[pygame.K_w]:
         dy -= player.speed
     if keys[pygame.K_s]:
@@ -73,10 +73,32 @@ def handle_input(player, keys, background):
     global enter_pressed_last_frame
 
     if player.dialog.active:
-        if keys[pygame.K_e]:
-            player.dialog.close()
+        player.can_move = False
+        if player.dialog.options:
+            # A and D to move selection
+            if keys[pygame.K_a]:
+                player.dialog.select_option_left()
+            elif keys[pygame.K_d]:
+                player.dialog.select_option_right()
+
+            # Enter to select
+            if keys[pygame.K_RETURN]:
+                if not enter_pressed_last_frame:
+                    player.dialog.select_current_option()
+                enter_pressed_last_frame = True
+            else:
+                player.can_move = True
+                enter_pressed_last_frame = False
+        else:
+            # No options — press E to close
+            if keys[pygame.K_e]:
+                player.dialog.close()
+                player.can_move = True
         return
 
+    # No dialog active — normal behavior
+    player.can_move = True
+    
     if keys[pygame.K_RETURN]:
         if not enter_pressed_last_frame:
             handle_interaction(background, player)
@@ -84,6 +106,7 @@ def handle_input(player, keys, background):
     else:
         enter_pressed_last_frame = False
 
-    dx, dy = get_new_position(player, keys)
-    move_and_handle_x(player, dx, background)
-    move_and_handle_y(player, dy, background)
+    if player.can_move:
+        dx, dy = get_new_position(player, keys)
+        move_and_handle_x(player, dx, background)
+        move_and_handle_y(player, dy, background)

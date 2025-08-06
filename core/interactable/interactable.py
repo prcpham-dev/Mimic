@@ -10,14 +10,14 @@ class Interactable:
         self.original_image = self.image.copy()
         self.activated = True
 
-    def draw_interactable(self, screen, isLeft=True):
-        if isLeft:
+    def draw_interactable(self, screen, is_left=True):
+        if is_left:
             screen.blit(self.image, self.rect.topleft)
         else:
             screen.blit(pygame.transform.flip(self.image, True, False), self.rect.topleft)
 
-    def flip_item(self, isLeft):
-        if isLeft:
+    def flip_item(self, is_left):
+        if is_left:
             self.image = self.original_image
         else:
             self.image = pygame.transform.flip(self.original_image, True, False)
