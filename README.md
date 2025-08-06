@@ -1,6 +1,6 @@
-# Mirror: Development Roadmap
+# Mimic: Development Roadmap
 
-**Mirror** is a pixel-art psychological sim where the player completes daily chores — but behind the scenes, the game observes, learns, and gradually mimics the player's behavior until control is lost to an AI that becomes you.
+**Mimic** is a pixel-art psychological sim where the player completes daily chores — but behind the scenes, the game observes, learns, and gradually mimics the player's behavior until control is lost to an AI that becomes you.
 
 ---
 
