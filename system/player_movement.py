@@ -87,18 +87,12 @@ def handle_input(player, keys, background):
                     player.dialog.select_current_option()
                 enter_pressed_last_frame = True
             else:
-                player.can_move = True
                 enter_pressed_last_frame = False
-        else:
-            # No options — press E to close
-            if keys[pygame.K_e]:
-                player.dialog.close()
-                player.can_move = True
         return
 
     # No dialog active — normal behavior
     player.can_move = True
-    
+
     if keys[pygame.K_RETURN]:
         if not enter_pressed_last_frame:
             handle_interaction(background, player)
