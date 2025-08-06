@@ -49,8 +49,5 @@ class Player:
     def set_task_manager(self, task_manager):
         self.task_manager = task_manager
 
-    def move_switch(self):
-        self.can_move = not self.can_move
-
 
 
