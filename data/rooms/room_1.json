@@ -26,13 +26,16 @@
     ],
     "obstacles": [
         {
-            "type": "Obstacle",
+            "type": "Enterable_obstacle",
             "name": "Block",
             "x": 500,
             "y": 300,
             "width": 200,
             "height": 200,
-            "sprite": "assets/house.png"
+            "sprite": "assets/house.png",
+            "target_room": "house",
+            "spawn_position": [100, 300],
+            "interaction_side": "bottom"
         },
         {
             "type": "Garden_plot",

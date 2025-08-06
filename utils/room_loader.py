@@ -4,6 +4,7 @@ from core.interactable.NPC import NPC
 from core.room import Room
 from core.interactable.obstacle import Obstacle
 from core.interactable.garden_plot import Garden_plot
+from core.interactable.enterable_obstacle import EnterableObstacle
 
 
 def load_room_from_json(path):
@@ -46,6 +47,17 @@ def load_room_from_json(path):
             obstacles.append(obstacle)
         elif obj_type == "Garden_plot":
             obstacle = Garden_plot(name, x, y, width, height, image_path=sprite)
+            obstacles.append(obstacle)
+        elif obj_type == "Enterable_obstacle":
+            target_room = obj.get("target_room")
+            spawn_position = tuple(obj.get("spawn_position", (0, 0)))
+            interaction_side = obj.get("interaction_side", "bottom")
+            
+            obstacle = EnterableObstacle(name, x, y, width, height, image_path=sprite,
+                target_room=target_room, spawn_position=spawn_position,
+                interaction_side=interaction_side
+            )
+
             obstacles.append(obstacle)
         else:
             print(f"[WARN] Unknown obstacle type: {obj_type}")

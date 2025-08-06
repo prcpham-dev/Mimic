@@ -1,22 +1,14 @@
 {
-    "id": "room_2",
+    "id": "house",
     "name": "Kitchen",
-    "background_img": "assets/background/rooms/room_2.png",
+    "background_img": "assets/background/rooms/house_room.png",
     "neighbors": {
-        "left": "room_1",
+        "left": null,
         "down": null,
-        "right": null,
+        "right": "room_1",
         "up": null
     },
     "interactables": [
-        {
-            "type": "Item",
-            "name": "Sword",
-            "x": 100,
-            "y": 160,
-            "sprite": "assets/items/sword.png",
-            "z_index": 1
-        },
         {
             "type": "NPC",
             "name": "Chef",
