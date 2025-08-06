@@ -2,7 +2,6 @@ from config import WINDOW_WIDTH, WINDOW_HEIGHT
 from system.interaction import handle_interaction
 import pygame
 
-# Global variable to track Enter key state
 enter_pressed_last_frame = False
 
 def get_new_position(player, keys):
