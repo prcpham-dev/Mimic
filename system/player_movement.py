@@ -68,22 +68,25 @@ def move_and_handle_y(player, dy, background):
                 player.rect.y = orig_y
                 break
 
-def handle_input(player, keys, background):
+def handle_input(keys, game):
+    player = game.player
+    background = game.background
+
     global enter_pressed_last_frame
 
-    if player.dialog.active:
+    if game.dialog.active:
         player.can_move = False
-        if player.dialog.options:
+        if game.dialog.options:
             # A and D to move selection
             if keys[pygame.K_a]:
-                player.dialog.select_option_left()
+                game.dialog.select_option_left()
             elif keys[pygame.K_d]:
-                player.dialog.select_option_right()
+                game.dialog.select_option_right()
 
             # Enter to select
             if keys[pygame.K_RETURN]:
                 if not enter_pressed_last_frame:
-                    player.dialog.select_current_option()
+                    game.dialog.select_current_option()
                 enter_pressed_last_frame = True
             else:
                 enter_pressed_last_frame = False
@@ -94,7 +97,7 @@ def handle_input(player, keys, background):
 
     if keys[pygame.K_RETURN]:
         if not enter_pressed_last_frame:
-            handle_interaction(background, player)
+            handle_interaction(game)
         enter_pressed_last_frame = True
     else:
         enter_pressed_last_frame = False

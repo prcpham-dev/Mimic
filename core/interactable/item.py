@@ -7,10 +7,10 @@ class Item(Interactable):
         self.activated = activated
         super().__init__(name, x, y, width, height, image_path)
 
-    def interact(self, player):
+    def interact(self, game):
         if not self.activated:
             return
-
+        player = game.player
         if player.held_item:
             player.held_item.activated = True
             player.held_item.z_index = 0

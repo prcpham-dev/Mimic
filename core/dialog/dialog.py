@@ -11,7 +11,7 @@ class DialogBox:
         self.option_rects = []
         self.current_branch = None
         self.dialog_data = None
-        self.selected_option_index = 0  # Track selected option
+        self.selected_option_index = 0
         self.title = ""
 
     def open(self, title, dialog_data):
@@ -139,8 +139,6 @@ class DialogBox:
             lines.append(current_line.rstrip())
 
         return lines
-
-    # --- New: Keyboard selection methods ---
 
     def select_option_left(self):
         if self.options:

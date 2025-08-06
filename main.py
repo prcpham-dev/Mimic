@@ -2,6 +2,7 @@ from config import WINDOW_WIDTH, WINDOW_HEIGHT
 from core.player import Player
 from core.background import Background
 from core.dialog.dialog import DialogBox
+from core.game import Game
 
 import system.player_movement as player_movement
 from core.task_manager import TaskManager
@@ -15,16 +16,17 @@ def main():
     font = pygame.font.SysFont("Arial", 28)
     pygame.display.set_caption("Mimic")
     clock = pygame.time.Clock()
+    game = Game()
 
     # Game objects
-    player = Player()
-    background = Background()
+    game.set_player(Player())
+    game.set_background(Background())
     
     # Dialog objects
-    player.set_dialog(DialogBox(font))
+    game.set_dialog(DialogBox(font))
 
     # Task manager object
-    player.set_task_manager(TaskManager())
+    game.set_task_manager(TaskManager())
 
     running = True
     while running:
@@ -35,18 +37,18 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        if player.task_manager.is_running():
+        if game.task_manager.is_running():
             # Task logic
-            player.task_manager.run(events)
-            player.task_manager.draw(screen)
+            game.task_manager.run(events)
+            game.task_manager.draw(screen)
         else:
             # Normal room logic
             keys = pygame.key.get_pressed()
-            player_movement.handle_input(player, keys, background)
+            player_movement.handle_input(keys, game)
 
-            background.draw_background(screen)
-            player.draw_player(screen)
-            player.dialog.draw(screen)
+            game.background.draw_background(screen)
+            game.player.draw_player(screen)
+            game.dialog.draw(screen)
 
         pygame.display.flip()
         clock.tick(60)

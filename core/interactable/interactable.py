@@ -22,5 +22,5 @@ class Interactable:
         else:
             self.image = pygame.transform.flip(self.original_image, True, False)
 
-    def interact(self, player):
+    def interact(self, game):
         print(f"{self.name} interacted with by player.")

@@ -8,6 +8,6 @@ class NPC(Interactable):
         self.dialog_path = dialog_path
         super().__init__(name, x, y, width, height, image_path )
 
-    def interact(self, player):
+    def interact(self, game):
         conversation = load_npc_conversation(self.dialog_path)
-        player.dialog.open(self.name, conversation)
+        game.dialog.open(self.name, conversation)
