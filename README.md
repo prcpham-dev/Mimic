@@ -21,13 +21,11 @@ pixel_ai_game/
 │   ├── task.py                # Chore/task system
 │   └── background.py          # Dealing with background and map, activities
 │
-├── system/                    # AI behavior engine
-│   ├── logger.py              # Logs player actions to JSON
-│   ├── predictor.py           # Predicts actions, calculates accuracy
-│   └── ghost_engine.py        # Controls ghosting behavior based on accuracy
+├── system/                    # System, controls
+│   └── player_movement.py     # Player keybinds
 │
 ├── utils/                     # General-purpose utilities
-│   ├── file_io.py             # JSON read/write helpers
+│   ├── file_reader.py         # JSON read/write helpers
 │   └── timer.py               # In-game countdown timer logic
 │
 ├── data/                      # Saved logs and player behavior data
