@@ -5,7 +5,7 @@
 ## 📁 Project Structure
 
 ```
-pixel_ai_game/
+mimic/
 │
 ├── main.py                    # Entry point, game loop
 ├── config.py                  # Global constants (screen size, FPS, etc.)
