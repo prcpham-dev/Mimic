@@ -10,7 +10,7 @@ mimic/
 ├── main.py                    # Entry point, game loop
 ├── config.py                  # Global constants (screen size, FPS, etc.)
 │
-├── assets/                    # Art, audio, fonts
+├── assets/                    # Art, audio
 │   ├── player.png
 │   ├── npc.png
 │   └── items, maps,...
